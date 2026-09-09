@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #0b0f14;
+  --color-ink-900: #10151c;
+  --color-ink-800: #171e27;
+  --color-ink-700: #212a36;
+
+  --color-ember-500: #ff6a3d;
+  --color-ember-400: #ff8659;
+  --color-ember-300: #ffa87e;
+
+  --color-teal-500: #17d1c4;
+  --color-teal-400: #4fe3d8;
+
+  --font-display: 'Clash', 'Sora', system-ui, sans-serif;
+  --font-sans: 'Sora', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink-950);
+  color: #eef2f6;
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-ember-500);
+  color: #0b0f14;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink-950);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-700);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ember-500);
+}
+
+.glass {
+  background: rgba(23, 30, 39, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.text-gradient {
+  background: linear-gradient(92deg, #ffc09e 0%, #ff8659 45%, #ff5a28 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  z-index: 999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
