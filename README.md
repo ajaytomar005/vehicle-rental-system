@@ -231,7 +231,10 @@ npm install
 npm run dev
 ```
 
-The app runs at `http://localhost:5173` and proxies `/api` to the backend.
+The app runs at `http://localhost:3000`. In dev it rewrites `/api/*` to the
+backend at `BACKEND_URL` (defaults to `http://localhost:8080`); in production
+point `lib/server-api.ts`'s `BACKEND_URL` and the deployed API's CORS
+`allowed-origins` at the real frontend origin instead.
 
 ### Demo accounts
 
@@ -251,12 +254,17 @@ Set `SEED_DEMO_DATA=false` to skip seeding.
 
 | Part | Technology |
 |------|-----------|
-| Framework | React 19 + TypeScript (Vite) |
+| Framework | Next.js 16 (App Router) + TypeScript |
 | Styling | Tailwind CSS |
 | Animation | Framer Motion |
-| Routing | React Router |
 | State | Zustand |
-| HTTP | Axios |
+| HTTP | Axios (client) + native `fetch` (server components) |
+
+The landing page and vehicle detail pages are Server Components — vehicle data
+is fetched on the server so search engines and social previews see real
+content, and `next/image` handles responsive image optimization. Everything
+behind a login (bookings, dashboards, profile) is a client component, same as
+a typical SPA, since that data is per-user and has no SEO value.
 
 Pages: landing, browse/search, vehicle detail with live price quoting, booking
 and payment, customer bookings, owner dashboard (list vehicles, handle pickup and

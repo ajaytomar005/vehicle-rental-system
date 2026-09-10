@@ -6,8 +6,8 @@ backend/target/
 
 # Node
 node_modules/
-frontend/dist/
-frontend/.vite/
+frontend/.next/
+frontend/next-env.d.ts
 
 # Environment
 .env

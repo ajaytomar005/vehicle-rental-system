@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #0a0d12;
+  --color-ink-900: #0f141b;
+  --color-ink-800: #161d27;
+  --color-ink-700: #202834;
+  --color-ink-600: #2b3542;
+
+  --color-ember-500: #ff6a3d;
+  --color-ember-400: #ff8659;
+  --color-ember-300: #ffa87e;
+
+  --color-teal-500: #17d1c4;
+  --color-teal-400: #4fe3d8;
+  --color-teal-300: #8ff0e8;
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink-950);
+  color: #f2f5f8;
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-ember-500);
+  color: #0a0d12;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink-950);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-700);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ember-500);
+}
+
+.glass {
+  background: rgba(22, 29, 39, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.text-gradient {
+  background: linear-gradient(92deg, #ffc09e 0%, #ff8659 45%, #ff5a28 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mesh-glow {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 106, 61, 0.22), transparent 40%),
+    radial-gradient(circle at 85% 10%, rgba(23, 209, 196, 0.18), transparent 35%),
+    radial-gradient(circle at 50% 90%, rgba(255, 134, 89, 0.12), transparent 45%);
+}
+
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  z-index: 999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--color-ink-800) 25%, var(--color-ink-700) 37%, var(--color-ink-800) 63%);
+  background-size: 400% 100%;
+  animation: skeleton-wave 1.6s ease-in-out infinite;
+}
+
+@keyframes skeleton-wave {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
